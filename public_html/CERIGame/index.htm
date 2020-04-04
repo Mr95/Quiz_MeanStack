@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html ng-app ="MyApp">
+
+<head>
+
+   <!-- <base href="/"> -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+	
+   
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="CERIGame/css/styles.css">
+    
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>  
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/ngstorage/0.3.6/ngStorage.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <script >  var socket = io();</script>
+    
+    <script src="CERIGame/app/app.js" ></script>    
+    <script src="CERIGame/app/services/service.js"></script>
+    <script src="CERIGame/app/services/sessionService.js"></script>
+    <script src="CERIGame/app/services/profileService.js"></script>
+    <script src="CERIGame/app/services/historiqueService.js"></script>
+    <script src="CERIGame/app/services/quizService.js"></script>
+    <script src="CERIGame/app/services/usersService.js"></script>
+    <script src="CERIGame/app/controllers/RootController.js"></script>   
+    <script src="CERIGame/app/controllers/controller.js"></script>   
+    <script src="CERIGame/app/controllers/notificationController.js"></script>
+    <script src="CERIGame/app/controllers/usersController.js"></script>
+    <script src="CERIGame/app/controllers/profileController.js"></script> 
+    <script src="CERIGame/app/controllers/quizController.js"></script>   
+    <script src="CERIGame/app/controllers/nouvellePartyController.js"></script>
+    <script src="CERIGame/app/controllers/historiqueController.js"></script>   
+    <script src="CERIGame/app/controllers/logoutController.js"></script>   
+    <title> index </title>
+
+</head>
+
+    <body  style="background-color:aliceblue;" ng-controller="RootController">
+<!-- ng-hide='loginPage' ng-hide='Authenticate.isLoggedin() == true' -->
+       
+<div class="container"  ng-hide='loginPage' ng-controller="controller">
+             <!--ng-show="form" --> 
+            <h1 style="text-align:center;margin-top:50px;" >Login</h1>	
+		
+            <div class="row" style="margin: 100px auto;">
+
+                <div class="col-xs-0 col-md-3 col-lg-1">
+
+                    
+                </div>
+
+                <div  class="col-xs-10 col-md-6 col-lg-10"> 
+
+                      <!--ng-show="form" -->  
+
+                    <form   method="GET" role="form" novalidate >
+                    
+                        <div class="form-group">
+                            <label for="Nom">Nom :</label>
+                            <input type="text" class="form-control" ng-model="nom" name="nom"id="nom"  placeholder="Veulliez saisir votre Nom" >
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="pwd">Password:</label>
+                            <input type="password" class="form-control" id="password" ng-model="password" name="password"  placeholder="Vuelliez saisir votre mot de passe">
+                        </div>
+                                  
+                        <button ng-click="login()" type="login" class="btn btn-primary col-lg-12">Login</button>
+        
+                    </form>
+                    <div ng-hide="success" class="alert alert-success">
+                         Tu es connecté: <br> <p ng-bind="storage"></p>
+                         
+                      </div>
+
+                      <div ng-hide="danger" class="alert alert-danger">
+                         opps, erreur de connexion
+                      </div>
+
+
+                </div> 
+     
+
+            </div>
+
+        </div>
+
+        
+
+
+        <!-- home -->
+
+       <!-- ng-hide='home'  ng-show=Authenticate.isLoggedin()==true'-->
+      
+        <div class="container-fluid" id="wrapper"  ng-hide='home' style="padding:0px;">
+
+
+                    <div id="sidebar-wrapper">
+                      <ul class="sidebar-nav">
+                          <li class="sidebar-brand">
+                              <a href="/">
+                                  Joueurs Connectés
+                              </a>
+                          </li>
+
+                          
+                          <li ng-repeat="x in connected_players">
+                              <a href="#">{{x.nom}}</a>
+                          </li>
+                          
+                      </ul>
+                  </div>
+
+
+                <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                        <!-- Brand -->
+                        <a class="navbar-brand" href="#">CERIGame</a>
+                      
+                        <!-- Links -->
+                        <ul class="navbar-nav">
+                          <li class="nav-item"><!--#!quiz  /quiz-->
+                            <a class="nav-link" href="#!quiz">Quiz</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#!historique">Historique</a>
+                          </li>
+                       
+                          <li class="nav-item">
+                            <a class="nav-link" href="#!notification">Notification</a>
+                          </li>
+
+                          <!-- Dropdown -->
+                          <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                             Mon Compte
+                            </a>
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item" ng-controller='profileController' ng-click="profil()" href="#!profile">Profile</a>
+                              <!--ng-click-->
+                              <a class="dropdown-item"  ng-controller='logoutController' ng-click='logout()' href="#!logout">Logout</a>
+                            </div>
+                          </li>
+                        </ul>
+                      </nav>
+
+                      <div class="alert alert-warning alert-dismissible fade show" role="alert" ng-hide="success">
+                            <strong>Tu es connecté: </strong>   <p ng-bind="storage"></p>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                      
+                          <!--Notification chalenge-->
+
+                          <div ng-hide="notif" class="alert alert-info alert-dismissible col-lg-8">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                              <strong>Info !</strong> nouveau défi.
+                          </div>
+
+                          <div ng-hide="refus_defi" class="alert alert-danger alert-dismissible col-lg-8">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                              <strong>Info !</strong> défi refusé.
+                          </div>
+
+
+                          <!--End notification challenge-->
+
+                          <!-- pour afficher les differentes pages selon le choix voulu dans le menu -->
+                    <div id="page-content-wrapper">
+                      <div class="container-fluid" > 
+                        <div class="row">
+                           <div class="col-lg-9" ng-view>
+
+                           </div> 
+                        </div>
+                      </div>
+                  </div>       
+
+        </div>
+
+
+
+
+
+  <script> 
+ 
+       
+        
+  </script>
+
+    </body>
+
+</html>

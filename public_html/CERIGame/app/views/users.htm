@@ -1,0 +1,58 @@
+<h1>Joueurs</h1>
+
+<div class="alert alert-success" ng-hide="alert">
+    <strong>Success!</strong> Invitation envoyé .
+  </div>
+
+
+<div class="row">
+
+<div class="col-lg-6">
+    <h5>connectés</h5>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>NOM</th>
+        <th>PRENOM</th>
+        <th>ACTION</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="user in on_users">
+        <td>{{user.nom}}</td>
+        <td>{{user.prenom}}</td>
+        <td>{{user.id}}</td>
+        <td><a href="#!defi/{{theme}}/{{level}}/{{score}}/{{chalenger}}/{{user.id}}"  class="btn btn-success"> défier </a></td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>           
+
+
+
+<div class="col-lg-6">
+
+    <h5>deconnectés</h5>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+            <th>NOM</th>
+            <th>PRENOM</th>
+            <th>ACTION</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="of_usr in of_users">
+            <td>{{of_usr.nom}}</td>
+            <td>{{of_usr.prenom}}</td>
+            <td>{{of_usr.id}}</td>
+            <td><a href="#!defi/{{theme}}/{{level}}/{{score}}/{{chalenger}}/{{of_usr.id}}"   class="btn btn-danger"> défier </a></td>
+        </tr>
+      
+      </tbody>
+    </table>
+  </div>   
+
+
+</div>

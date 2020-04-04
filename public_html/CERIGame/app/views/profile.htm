@@ -1,0 +1,31 @@
+<h1>Profile</h1>
+
+  <div class="form-group">
+    <p>Identifiant: &nbsp;&nbsp; {{identifiant}} </p>
+  </div>
+
+  <div class="form-group">
+    <p>Nom: &nbsp;&nbsp; {{nom}}</p> 
+  </div>
+
+  <div class="form-group">
+    <p>Prenom: &nbsp;&nbsp; {{prenom}}</p>
+  </div>
+
+  <div class="form-group">
+    <p>Date de Naissance: &nbsp;&nbsp; {{DN}}</p>
+  </div>
+
+     
+  <div class="form-group">
+   <p>statut: &nbsp;&nbsp; {{statut}}</p>
+  </div>
+
+    
+  <form class="form-inline" method="POST" novalidate>   
+      <label for="humeur"> Humeur : &nbsp;&nbsp;</label>
+      <input type="text" class="form-control" id="humeur" name="humeur" ng-model="humeur">&nbsp;&nbsp;&nbsp;
+      <button type="submit" ng-click="updateProfile()" class="btn btn-primary">Modifier humeur</button>
+  </form>
+
+

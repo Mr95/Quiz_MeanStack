@@ -1,0 +1,32 @@
+<h1>Notification</h1>
+
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>Theme</th>
+        <th>Niveau</th>
+        <th>Score obtenu</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+   
+    <tbody>
+    <tr  ng-repeat="notification in notifs">
+        <td>{{ notification.id_defi}}</td>
+        <td>{{ notification.theme }}</td>
+        <td>{{ notification.level }}</td>
+        <td>{{ notification.score }}</td>
+        <td>
+           
+<!-- /{{notification.id_defi}}/{{notification.theme}}/{{notification.level}}/{{notification.chalenger}}/{{notification.adversaire}} -->
+            <a href="#!nouvelleParty/{{notification.id_defi}}/{{notification.theme}}/{{notification.level}}/{{notification.score}}/{{notification.chalenger}}/{{notification.adversaire}}">
+                <button type="button" class="btn btn-success">Accepter</button><br><br>
+            </a>
+            <button type="button" class="btn btn-danger" ng-click="refuseChallenge(notification.id_defi,notification.chalenger)">Refuser</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+

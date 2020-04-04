@@ -1,0 +1,95 @@
+<h1>CERIGame challenge</h1>
+
+
+<div id="content" class="fx-tiles">
+    <!-- FULL WIDTH LAYOUT -->
+    <div class="fx-grid fx-cf">
+     
+     <div class="row">
+
+      <div class="card col-lg-12">
+        
+          
+            
+           <button  class="btn btn-primary" ng-click="commencer()">Commencer</button>
+
+          </form>
+
+        </div>
+      </div>
+
+
+
+     
+     <br><br><div class="col-lg-12"></div>
+
+     <div class="card col-lg-12" ng-hide="quiz_board">
+      
+      
+      <h5 class="card-header">Quiz  <br> {{chronoMinn}} : {{chronoSecc}}</h5>
+        <div class="card-body" ng-hide="tableau">
+          <h5 class="card-title"> question : {{quizz[current_quiz].question}}</h5>
+         <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+        
+         <!-- pour afficher reponse correct-->
+         <div class="alert alert-success" ng-hide="Repcorrect" role="alert">
+            Réponse correct
+         </div>
+
+           <!-- pour afficher reponse correct-->
+         <div class="alert alert-danger" ng-hide="Repfausse" role="alert">
+             Réponse  Fausse 
+         </div>
+
+
+          <div class="custom-control custom-radio"  ng-hide="prop1">
+              <input type="radio"  ng-model="prop" value="{{quizz[current_quiz].propositions[0]}}" class="custom-control-input" id="p1" name="p1">
+              <label class="custom-control-label" for="p1">{{quizz[current_quiz].propositions[0]}}</label>
+          </div>
+          
+          <div class="custom-control custom-radio" ng-hide="prop2">
+              <input type="radio"  ng-model="prop" value="{{quizz[current_quiz].propositions[1]}}" class="custom-control-input" id="p2" name="p2">
+              <label class="custom-control-label" for="p2">{{quizz[current_quiz].propositions[1]}}</label>
+          </div>
+          
+          <div class="custom-control custom-radio " ng-hide="prop3">
+              <input type="radio"  ng-model="prop" value="{{quizz[current_quiz].propositions[2]}}" class="custom-control-input" id="p3" name="p3">
+              <label class="custom-control-label" for="p3">{{quizz[current_quiz].propositions[2]}}</label>
+          </div>
+
+          <div class="custom-control custom-radio " ng-hide="prop4">
+              <input type="radio" ng-model="prop" value="{{quizz[current_quiz].propositions[3]}}" class="custom-control-input" id="p4" name="p4">
+              <label class="custom-control-label" for="p4">{{quizz[current_quiz].propositions[3]}}</label>
+          </div>
+
+        
+          <button  ng-click=" getAnswer() ; next_quiz() " class="btn btn-primary">Answer</button>
+      
+        </div>
+
+        
+
+         <!-- ici je vais montrer le résultat dans un card body --> 
+
+         <div class="card-body" ng-hide="tableau_resultat">
+
+            <h5 class="card-title"> Vous Avez  {{nbcorrectAnswer}} réponse(s) correct(s) parmi 5 </h5>
+            
+            <h7 class="card-title"> Dans un délai de {{chronoMinn}} : {{chronoSecc}} </h7> <br><br>
+           
+            <h5>Votre score est  {{score2}}  / 100  <br> et celui de votre adversaire est {{score1}}  / 100</h5>
+                
+            
+
+
+          </div>
+
+        
+
+      </div>
+      <br><br>
+
+
+
+
+    </div>

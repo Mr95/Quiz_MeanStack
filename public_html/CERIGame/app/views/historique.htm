@@ -1,0 +1,70 @@
+<h1>Historique</h1>
+
+
+<!--Affichage historique-->
+
+<table class="table .table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">date</th>
+        <th scope="col">nombre reponse</th>
+        <th scope="col">temps</th>
+        <th scope="col">score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="x in historiques">
+        <th scope="row">{{x.id_users}}</th>
+        <td>{{x.date}}</td>
+        <td>{{x.nbreponse}}</td>
+        <td>{{x.temps}} s</td> 
+        <td>{{x.score}}</td>
+
+      </tr>
+     
+    </tbody>
+  </table>
+
+
+<br><br>
+<!-- Affichage top 10 -->
+<p>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Top 10</button>
+    
+  </p>
+  <div class="row">
+    <div class="col">
+      <div class="collapse multi-collapse" id="multiCollapseExample2">
+        <div class="card card-body">
+        
+            <table class="table .table-striped">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">date</th>
+                    <th scope="col">nombre reponse</th>
+                    <th scope="col">temps</th>
+                    <th scope="col">score</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="y in topten">
+                    <th scope="row">{{y.id_users}}</th>
+                    <td>{{y.date}}</td>
+                    <td>{{y.nbreponse}}</td>
+                    <td>{{y.temps}} s</td> 
+                    <td>{{y.score}}</td>
+            
+                  </tr>
+                 
+                </tbody>
+              </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <br>
